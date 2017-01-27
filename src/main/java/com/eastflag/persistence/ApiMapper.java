@@ -3,6 +3,7 @@ package com.eastflag.persistence;
 import com.eastflag.domain.MemberVO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * Created by eastf on 2017-01-28.
@@ -15,4 +16,10 @@ public interface ApiMapper {
             "VALUES(#{id}, #{password}, #{name}, now())",
             "</script>"})
     int addMember(MemberVO member);
+
+    @Select({"<script>",
+            "SELECT count(*) FROM member",
+            "WHERE id = #{id} and password = #{password}",
+            "</script>"})
+    int login(MemberVO member);
 }
