@@ -1,6 +1,7 @@
 package com.eastflag.controller;
 
 import com.eastflag.domain.MemberVO;
+import com.eastflag.domain.ResultDataVO;
 import com.eastflag.domain.ResultVO;
 import com.eastflag.persistence.ApiMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,9 @@ public class ApiController {
 
     @RequestMapping("/api/login")
     public ResultVO login(@RequestBody MemberVO member) {
-        int count = mapper.login(member);
-        if (count > 0) {
-            return new ResultVO(0, "success");
+        MemberVO loginMember = mapper.login(member);
+        if (loginMember != null) {
+            return new ResultDataVO<MemberVO>(0, "success", loginMember);
         } else {
             return new ResultVO(100, "fail");
         }

@@ -36,7 +36,7 @@ public class ApiMapperTest {
         member.setId("aaa");
         member.setPassword("1234");
 
-        int count = mapper.login(member);
-        assertThat(count).isEqualTo(1);
+        MemberVO loginMember = mapper.login(member);
+        assertThat(loginMember).isNotNull();
     }
 }

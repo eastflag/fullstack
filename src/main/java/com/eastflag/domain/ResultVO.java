@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResultVO {
-    private int result;
-    private String msg;
+    protected int result;
+    protected String msg;
 }

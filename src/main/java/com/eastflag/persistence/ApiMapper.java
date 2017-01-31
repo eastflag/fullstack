@@ -18,8 +18,8 @@ public interface ApiMapper {
     int addMember(MemberVO member);
 
     @Select({"<script>",
-            "SELECT count(*) FROM member",
+            "SELECT member_id, id, name FROM member",
             "WHERE id = #{id} and password = #{password}",
             "</script>"})
-    int login(MemberVO member);
+    MemberVO login(MemberVO member);
 }
