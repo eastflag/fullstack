@@ -10,7 +10,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResultVO {
-    protected int result;
-    protected String msg;
+public class ResultVO<T> {
+    private int result;
+    private String msg;
+    private T data;
+
+    public ResultVO(int result, String msg) {
+        this.result = result;
+        this.msg = msg;
+    }
 }
