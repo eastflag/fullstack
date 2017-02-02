@@ -1,5 +1,6 @@
 package com.eastflag.controller;
 
+import com.eastflag.domain.BoardVO;
 import com.eastflag.domain.MemberVO;
 import com.eastflag.domain.ResultVO;
 import com.eastflag.persistence.ApiMapper;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * Created by eastflag on 2017-01-26.
@@ -35,5 +38,10 @@ public class ApiController {
         } else {
             return new ResultVO(100, "fail");
         }
+    }
+
+    @RequestMapping("/api/getBoardList")
+    public List<BoardVO> getBoardList() {
+        return mapper.getBoardList();
     }
 }
