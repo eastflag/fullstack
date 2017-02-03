@@ -31,6 +31,7 @@ public interface ApiMapper {
     @Select({"<script>",
             "select B.*, (select count(*) from comment where board_id = B.board_id) as 'comment_count', member.name",
             "from board B inner join member on B.member_id = member.member_id",
+            "order by board_id desc",
             "</script>"})
     List<BoardVO> getBoardList();
 }
