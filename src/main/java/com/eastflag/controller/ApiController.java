@@ -1,6 +1,7 @@
 package com.eastflag.controller;
 
 import com.eastflag.domain.BoardVO;
+import com.eastflag.domain.CommentVO;
 import com.eastflag.domain.MemberVO;
 import com.eastflag.domain.ResultVO;
 import com.eastflag.persistence.ApiMapper;
@@ -49,5 +50,10 @@ public class ApiController {
     @RequestMapping("/api/getBoard")
     public BoardVO getBoard(@RequestParam("board_id") int board_id) {
         return mapper.getBoard(board_id);
+    }
+
+    @RequestMapping("/api/getCommentList")
+    public List<CommentVO> getCommentList(@RequestParam("board_id") int board_id) {
+        return mapper.getCommentList(board_id);
     }
 }

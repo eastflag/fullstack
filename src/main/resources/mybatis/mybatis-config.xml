@@ -21,6 +21,7 @@
     <typeAliases>
         <typeAlias type="com.eastflag.domain.BoardVO" alias="BoardVO" />
         <typeAlias type="com.eastflag.domain.MemberVO" alias="MemberVO" />
+        <typeAlias type="com.eastflag.domain.CommentVO" alias="CommentVO" />
     </typeAliases>
 
     <mappers>

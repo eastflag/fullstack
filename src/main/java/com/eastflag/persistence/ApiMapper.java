@@ -1,6 +1,7 @@
 package com.eastflag.persistence;
 
 import com.eastflag.domain.BoardVO;
+import com.eastflag.domain.CommentVO;
 import com.eastflag.domain.MemberVO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -42,4 +43,15 @@ public interface ApiMapper {
             "where board_id = #{board_id}",
             "</script>"})
     BoardVO getBoard(int board_id);
+
+    @ResultMap("resultComment")
+    @Select({"<script>",
+        "SELECT C.*, (select count(*) from comment where parent_id = C.comment_id) as reply_count,",
+            "(select count(*) from opinion where comment_id = C.comment_id and agree is true) as agree_count,",
+            "(select count(*) from opinion where comment_id = C.comment_id and disagree is true) as disagree_count,",
+            "member.name",
+            "FROM comment C inner join member on C.member_id = member.member_id",
+            "where board_id = #{board_id}",
+            "</script>"})
+    List<CommentVO> getCommentList(int board_id);
 }
