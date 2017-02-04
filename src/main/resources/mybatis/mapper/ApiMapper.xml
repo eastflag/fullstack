@@ -19,6 +19,7 @@
     <resultMap id="resultComment" type="CommentVO">
         <id property="comment_id" column="comment_id" />
         <result property="board_id" column="board_id" />
+        <result property="content" column="content" />
         <result property="created" column="created" />
         <result property="updated" column="updated" />
         <result property="reply_count" column="reply_count" />
