@@ -7,6 +7,7 @@ import com.eastflag.persistence.ApiMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -43,5 +44,10 @@ public class ApiController {
     @RequestMapping("/api/getBoardList")
     public List<BoardVO> getBoardList() {
         return mapper.getBoardList();
+    }
+
+    @RequestMapping("/api/getBoard")
+    public BoardVO getBoard(@RequestParam("board_id") int board_id) {
+        return mapper.getBoard(board_id);
     }
 }

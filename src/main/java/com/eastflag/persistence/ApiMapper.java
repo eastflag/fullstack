@@ -34,4 +34,12 @@ public interface ApiMapper {
             "order by board_id desc",
             "</script>"})
     List<BoardVO> getBoardList();
+
+    @ResultMap("resultBoard")
+    @Select({"<script>",
+            "select board.*, member.name",
+            "from board inner join member on board.member_id = member.member_id",
+            "where board_id = #{board_id}",
+            "</script>"})
+    BoardVO getBoard(int board_id);
 }
